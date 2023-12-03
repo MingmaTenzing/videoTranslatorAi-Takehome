@@ -26,16 +26,18 @@
 } @else {
 <div class="flex flex-col items-center justify-center h-[80vh] w-full">
   <div class="w-full font-bold text-2xl text-center">Login to your Account</div>
-  <div class="flex flex-col p-4 w-[320px]">
-    <mat-form-field class="">
-      <mat-label>Email Address </mat-label>
-      <input matInput [(ngModel)]="emailAddress" required />
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Password </mat-label>
-      <input matInput [(ngModel)]="password" required />
-    </mat-form-field>
-    <button mat-raised-button color="primary">Login</button>
+  <div class="">
+    <form class="flex flex-col p-4 w-[320px]" [formGroup]="loginForm">
+      <mat-form-field class="">
+        <mat-label>Email Address </mat-label>
+        <input matInput required formControlName="email" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Password </mat-label>
+        <input matInput required formControlName="password" />
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="login()">Login</button>
+    </form>
   </div>
 </div>
 

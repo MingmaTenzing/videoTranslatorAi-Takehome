@@ -13,9 +13,11 @@ import { environment } from '../../environment';
   providedIn: 'root',
 })
 export class SupabaseService {
-  private supabase: SupabaseClient;
+  private supabase: SupabaseClient | null = null;
   session: AuthSession | null = null;
-  constructor() {
+  constructor() {}
+
+  initialize() {
     this.supabase = createClient(
       environment.supabaseUrl,
       environment.supabaseKey
@@ -23,6 +25,6 @@ export class SupabaseService {
   }
   login(email: string, password: string) {
     console.log('service called');
-    return this.supabase.auth.signInWithPassword({ email, password });
+    return this.supabase!.auth.signInWithPassword({ email, password });
   }
 }
